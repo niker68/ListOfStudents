@@ -15,7 +15,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
+.modalSort{
+  position: relative;
+  z-index:99999;
+  width: 150px;
+}
+.buttonfilter{
+  min-width: 200px;
+  height: 42px;
+  padding-left: 10px;
+  border: 2px solid #808080;
+  border-radius: 5px;
+  outline: none;
+}
 .container {
   margin-left: 0px;
   width: 100%;
@@ -100,7 +112,7 @@ form {
 
 .menu_one {
   float: left;
-  width: 70%;
+  width: 60%;
 }
 .menu_two {
   float: right;
@@ -109,10 +121,12 @@ form {
 .right{
   float: right;
   padding-right: 40px;
+  z-index:99999999;
+  position: relative;
 }
 .left{
   float: left;
-
+  width: 50%;
 }
 
 

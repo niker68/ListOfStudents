@@ -4,6 +4,7 @@ import SmallList from "./Todo/SmallList";
 import axios from 'axios';
 import ReactDOM from "react-dom";
 import BigListItem from "./Todo/BigListItem";
+import ModalSort from "./Modal/ModalSort";
 
 const styles = {
     table:{
@@ -29,6 +30,8 @@ function App() {
     let [studentsArray=[], setStudentsArray] = useState([]);
     const apiURL = "https://front-assignment-api.2tapp.cc/api/persons";
     const [textForSearch,setTextForSearch] = useState("");
+    const[modalSortActive, setModalSortActive] = useState(false);
+    const [currentSort,setCurrentSort] = useState("Имя А-Я");
     const filteredStudentsBySearch = studentsArray.filter(student =>{
         return student.name.toLowerCase().includes(textForSearch.toLowerCase())
     })
@@ -44,15 +47,69 @@ function App() {
         console.log(resultArray);
         setStudentsArray(resultArray);
     }
-
-
-
     useEffect( async  () => {
         await fetch(apiURL)
             .then(response => response.json())
             .then(data => setStudentsArray(data.students)).catch(error => alert(error.message));
     }, []);
     console.log(studentsArray);
+    function sortAZ(){
+        for(let i = 0; i < filteredStudentsBySearch.length; i++){
+            filteredStudentsBySearch[i].name = String(filteredStudentsBySearch[i].name)
+        }
+        filteredStudentsBySearch.sort((a, b) => a.name > b.name ? 1 : -1);
+    }
+    function sortZA(){
+        for(let i = 0; i < filteredStudentsBySearch.length; i++){
+            filteredStudentsBySearch[i].name = String(filteredStudentsBySearch[i].name)
+        }
+        filteredStudentsBySearch.sort((a, b) => a.name < b.name ? 1 : -1);
+    }
+    function sortAgeAO(){
+        for(let i = 0; i < filteredStudentsBySearch.length; i++){
+            filteredStudentsBySearch[i].name = String(filteredStudentsBySearch[i].name)
+        }
+        filteredStudentsBySearch.sort((a, b) => getAge(a.birthday,new Date()).years < getAge(b.birthday,new Date()).years ? 1 : -1);
+    }
+    function sortAgeDO(){
+        for(let i = 0; i < filteredStudentsBySearch.length; i++){
+            filteredStudentsBySearch[i].name = String(filteredStudentsBySearch[i].name)
+        }
+        filteredStudentsBySearch.sort((a, b) => getAge(a.birthday,new Date()).years > getAge(b.birthday,new Date()).years ? 1 : -1);
+    }
+    function sortRatingAO(){
+        for(let i = 0; i < filteredStudentsBySearch.length; i++){
+            filteredStudentsBySearch[i].name = String(filteredStudentsBySearch[i].name)
+        }
+        filteredStudentsBySearch.sort((a, b) => a.rating < b.rating ? 1 : -1);
+    }
+    function sortRatingDO(){
+        for(let i = 0; i < filteredStudentsBySearch.length; i++){
+            filteredStudentsBySearch[i].name = String(filteredStudentsBySearch[i].name)
+        }
+        filteredStudentsBySearch.sort((a, b) => a.rating > b.rating ? 1 : -1);
+    }
+
+    if (currentSort ==="Сначала старше"){
+        sortAgeAO();
+    }
+    if (currentSort ==="Сначала моложе"){
+        sortAgeDO();
+    }
+    if (currentSort ==="Имя А-Я"){
+        sortAZ();
+    }
+    if (currentSort ==="Имя Я-А"){
+        sortZA();
+    }
+    if (currentSort ==="Высокий рейтинг"){
+        sortRatingAO();
+    }
+    if (currentSort ==="Низкий рейтинг"){
+        sortRatingDO();
+    }
+
+
 
     return (
         <div class="container">
@@ -68,7 +125,9 @@ function App() {
                             </form>
                         </div>
                         <div className="right">
-                            <button className="buttonfilter">фильтры</button>
+                            <button className="buttonfilter" onClick={()=> {if(modalSortActive===true){setModalSortActive(false)} else {setModalSortActive(true)}}}>{currentSort}</button>
+                            {/* eslint-disable-next-line react/jsx-no-undef */}
+
                         </div>
                     <ul>
                         <li style={styles.li}>
@@ -106,7 +165,10 @@ function App() {
                         })}
                     </ul>
                     </div>
+            <ModalSort className = "modalSort" active = {modalSortActive} setActive = {setModalSortActive} sort = {currentSort} setSort = {setCurrentSort}>
+            </ModalSort>
         </div>
+
 
     )
 

@@ -4,7 +4,7 @@ import SmallList from "./Todo/SmallList";
 import axios from 'axios';
 import ReactDOM from "react-dom";
 import BigListItem from "./Todo/BigListItem";
-import ModalSort from "./Modal/ModalSort";
+import styled from "styled-components";
 
 const styles = {
     table:{
@@ -30,7 +30,6 @@ function App() {
     let [studentsArray=[], setStudentsArray] = useState([]);
     const apiURL = "https://front-assignment-api.2tapp.cc/api/persons";
     const [textForSearch,setTextForSearch] = useState("");
-    const[modalSortActive, setModalSortActive] = useState(false);
     const [currentSort,setCurrentSort] = useState("Имя А-Я");
     const filteredStudentsBySearch = studentsArray.filter(student =>{
         return student.name.toLowerCase().includes(textForSearch.toLowerCase())
@@ -110,11 +109,15 @@ function App() {
     }
 
 
+    const AppWrapper = styled.div`
+        margin-left: 0px;
+        width: 100%;
+        height: auto;
+`;
 
     return (
-        <div class="container">
-            <h1 align="center">Students
-            </h1>
+        <AppWrapper>
+            <h1 align="center">Students</h1>
 
                     <div className="dList">
                         <div className="left">
@@ -125,9 +128,19 @@ function App() {
                             </form>
                         </div>
                         <div className="right">
-                            <button className="buttonfilter" onClick={()=> {if(modalSortActive===true){setModalSortActive(false)} else {setModalSortActive(true)}}}>{currentSort}</button>
-                            {/* eslint-disable-next-line react/jsx-no-undef */}
-
+                            {/*<button className="buttonfilter" onClick={()=> {if(modalSortActive===true){setModalSortActive(false)} else {setModalSortActive(true)}}}>{currentSort}</button>*/}
+                            {/*/!* eslint-disable-next-line react/jsx-no-undef *!/*/}
+                            {/*onChange={(event) => setCurrentSort(event.target.currentSort)}*/}
+                            <select className="selectSort" value={currentSort} onChange={event => setCurrentSort(event.target.value)}>
+                                <option className="selectSort" value="Имя А-Я" >Имя А-Я</option>
+                                <option className="selectSort" value="Имя Я-А" >Имя Я-А</option>
+                                <option className="selectSort" value="Сначала моложе" >Сначала моложе</option>
+                                <option className="selectSort" value="Сначала старше" >Сначала старше</option>
+                                <option className="selectSort" value="Высокий рейтинг" >Высокий рейтинг</option>
+                                <option className="selectSort" value="Низкий рейтинг" >Низкий рейтинг</option>
+                            </select>
+                            <p></p>
+                            <p value={currentSort}></p>
                         </div>
                     <ul>
                         <li style={styles.li}>
@@ -165,9 +178,7 @@ function App() {
                         })}
                     </ul>
                     </div>
-            <ModalSort className = "modalSort" active = {modalSortActive} setActive = {setModalSortActive} sort = {currentSort} setSort = {setCurrentSort}>
-            </ModalSort>
-        </div>
+        </AppWrapper>
 
 
     )

@@ -39,8 +39,16 @@ code {
   margin-left: 30px;
   margin-right: 30px;
 }
+.dListVertical{
+  background-color: #ffffff;
+  border-radius: 5%;
+  padding-left: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
+  max-width: 1080px;
+}
 ul{
-  padding-top: 50px;
+
 }
 form {
   position: absolute;
@@ -51,22 +59,79 @@ form {
 }
 .d1 {}
 .d1 input {
-  width: 100%;
+  width: 70%;
   height: 42px;
   padding-left: 10px;
   border: 2px solid #808080;
   border-radius: 5px;
   outline: none;
-
+  max-width: 700px;
 
 }
-.selectSort{
-  width: 100%;
+.firstElement{
+  padding-top: 10px;
+}
+.firstElementVertical{
+  padding-top: 20px;
+}
+
+.verticalSpanLeft{
+  width: 15%;
+}
+.verticalSpanCenter{
+  width: 35%;
+}
+.topListVertical{
+  list-style-type: none;
+}
+.bottomListVertical{
+  margin-left: 20px;
+  list-style-type: disc;
+}
+.verticalSpanRight{
+  width: 25%;
+  align-content: center;
+}
+.d1Vertical input {
+width: 65%;
   height: 42px;
   padding-left: 10px;
   border: 2px solid #808080;
   border-radius: 5px;
   outline: none;
+max-width: 700px;
+
+}
+table{
+
+  width: 100%;
+}
+
+tr{
+  display: block;
+}
+
+
+.selectSort{
+  width: 25%;
+  height: 42px;
+  padding-left: 10px;
+  border: 2px solid #808080;
+  border-radius: 5px;
+  outline: none;
+  float: right;
+  margin-right: 200px;
+  max-width: 170px;
+}
+.selectSortVertical{
+  width: 35%;
+  height: 42px;
+  padding-left: 10px;
+  border: 2px solid #808080;
+  border-radius: 5px;
+  outline: none;
+  float: right;
+  max-width: 170px;
 }
 .d1 button {
   position: absolute;
@@ -87,6 +152,16 @@ form {
 }
 
 .avatar{
+  position: relative;
+  /*width:10%;*/
+  width: 50px;
+  height: 50px;
+
+  border-radius: 50%;
+
+}
+.avatarVertical{
+  position: relative;
   /*width:10%;*/
   width: 50px;
   height: 50px;
@@ -95,26 +170,46 @@ form {
 
 }
 .fio{
+  position: relative;
   padding-left: 10px;
-  width: 27%;
+  width: 25%;
+  min-width: 25%;
+  max-width: 25%;
 }
 .job{
-  width: 15%;
+  position: relative;
+  width: 13%;
+  min-width: 13%;
 }
 .group{
-  width: 10%;
+  position: relative;
+  width: 8%;
+  min-width: 8%;
 }
 .age{
-  width: 10%;
+  position: relative;
+  width: 8%;
+  min-width: 8%;
 }
 .rating{
-  width: 10%;
+  position: relative;
+  width: 8%;
+  min-width: 8%;
 }
 .color{
-  width: 10%;
+  position: relative;
+  width: 8%;
+
+max-width:30px;
+  max-height: 30px;
+  margin-right: 20px;
+
+  border-radius: 50%;
 }
 .buttondelete{
+  position: relative;
   width: 10%;
+  min-width: 30px;
 }
 
 .menu_one {
@@ -126,15 +221,16 @@ form {
   width: 25%;
 }
 .right{
-  float: right;
-  padding-right: 40px;
-  z-index:99999999;
   position: relative;
+  padding-right: 10px;
+  min-width: 100px;
+
 }
-.left{
-  float: left;
-  width: 50%;
+.rightVertical{
+  position: relative;
+  min-width: 100px;
 }
+
 
 
 

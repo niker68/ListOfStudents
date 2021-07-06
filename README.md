@@ -2,7 +2,7 @@
 # Отображение и редактирование списка
 
 <p>
-<img src="https://github.com/niker68/ListOfStudents/blob/master/src/data/2021-07-06_18-32-30.png" width="1917" height="941" />
+<img src="https://github.com/niker68/ListOfStudents/blob/master/src/data/2021-07-06_18-32-30.png" width="1533" height="752" />
 <img src="https://github.com/niker68/ListOfStudents/blob/master/src/data/2021-07-06_18-32-54.png" width="940" height="940" />
 </p>
 
